@@ -1,0 +1,169 @@
+{
+    "title": "SubscriptionsManagementClient",
+    "description": "The Admin Subscriptions Management Client.",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/azsadmin-Plan/2015-11-01/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://adminmanagement.local.azurestack.external/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Plans_ListAll": {
+            "main": "./lib/actions/Plans_ListAll.js",
+            "title": "List all plans across all subscriptions.",
+            "description": "List all plans across all subscriptions.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_ListAll.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_List": {
+            "main": "./lib/actions/Plans_List.js",
+            "title": "Get the list of plans under a resource group.",
+            "description": "Get the list of plans under a resource group.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_List.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_Delete": {
+            "main": "./lib/actions/Plans_Delete.js",
+            "title": "Delete the specified plan.",
+            "description": "Delete the specified plan.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_Get": {
+            "main": "./lib/actions/Plans_Get.js",
+            "title": "Get the specified plan.",
+            "description": "Get the specified plan.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_CreateOrUpdate": {
+            "main": "./lib/actions/Plans_CreateOrUpdate.js",
+            "title": "Create or update the plan.",
+            "description": "Create or update the plan.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_ListMetricDefinitions": {
+            "main": "./lib/actions/Plans_ListMetricDefinitions.js",
+            "title": "Get the metric definitions of the specified plan.",
+            "description": "Get the metric definitions of the specified plan.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_ListMetricDefinitions.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Plans_ListMetrics": {
+            "main": "./lib/actions/Plans_ListMetrics.js",
+            "title": "Get the metrics of the specified plan.",
+            "description": "Get the metrics of the specified plan.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Plans_ListMetrics.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
